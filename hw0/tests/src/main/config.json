@@ -1,0 +1,5 @@
+{
+    "database": {
+        "path": "src/main/db/account.sqlite"
+    }
+}

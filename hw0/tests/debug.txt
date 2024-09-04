@@ -1,0 +1,169 @@
+Failing Scenarios:
+cucumber features/sessions.feature:22 # Scenario Outline: Visit any page with an invalid session token
+cucumber features/show_person.feature:25 # Scenario: Visit someone else's person page with a valid session token
+cucumber features/sort.feature:42 # Example: Default sort order for updated is descending
+cucumber features/sort_misc.feature:12 # Scenario: Sort by fake attribute
+cucumber features/sort_misc.feature:16 # Scenario: Fake sort order
+cucumber features/sort_misc.feature:26 # Scenario Outline: Sort attribute and order are displayed
+cucumber features/sort_misc.feature:30 # Scenario Outline: Sort attribute and order are displayed
+cucumber features/sort_misc.feature:34 # Scenario Outline: Sort attribute and order are displayed
+./app create username="alice" password="password" name="Alice" status="listening to bob"
+./app create username="bob" password="password" name="Bob" status="talking to alice"
+./app create username="eve" password="password" name="Eve" status="listening to alice and bob"
+./app create username="dave" password="password" name="Dave" status="zzz"
+./app sort
+./app create username="alice" password="password" name="Alice" status="listening to bob"
+./app create username="bob" password="password" name="Bob" status="talking to alice"
+./app create username="eve" password="password" name="Eve" status="listening to alice and bob"
+./app create username="dave" password="password" name="Dave" status="zzz"
+./app sort
+./app create username="alice" password="password" name="Alice" status="listening to bob"
+./app create username="bob" password="password" name="Bob" status="talking to alice"
+./app create username="eve" password="password" name="Eve" status="listening to alice and bob"
+./app create username="dave" password="password" name="Dave" status="zzz"
+./app sort updated
+./app create username="alice" password="password" name="Alice" status="listening to bob"
+./app create username="bob" password="password" name="Bob" status="talking to alice"
+./app create username="eve" password="password" name="Eve" status="listening to alice and bob"
+./app create username="dave" password="password" name="Dave" status="zzz"
+./app sort updated
+./app create username="alice" password="password" name="Alice" status="listening to bob"
+./app create username="bob" password="password" name="Bob" status="talking to alice"
+./app create username="eve" password="password" name="Eve" status="listening to alice and bob"
+./app create username="dave" password="password" name="Dave" status="zzz"
+./app sort updated asc
+./app create username="alice" password="password" name="Alice" status="listening to bob"
+./app create username="bob" password="password" name="Bob" status="talking to alice"
+./app create username="eve" password="password" name="Eve" status="listening to alice and bob"
+./app create username="dave" password="password" name="Dave" status="zzz"
+./app sort updated asc
+./app create username="alice" password="password" name="Alice" status="listening to bob"
+./app create username="bob" password="password" name="Bob" status="talking to alice"
+./app create username="eve" password="password" name="Eve" status="listening to alice and bob"
+./app create username="dave" password="password" name="Dave" status="zzz"
+./app sort updated
+./app create username="alice" password="password" name="Alice" status="listening to bob"
+./app create username="bob" password="password" name="Bob" status="talking to alice"
+./app create username="eve" password="password" name="Eve" status="listening to alice and bob"
+./app create username="dave" password="password" name="Dave" status="zzz"
+./app sort password asc
+./app create username="alice" password="password" name="Alice" status="listening to bob"
+./app create username="bob" password="password" name="Bob" status="talking to alice"
+./app create username="eve" password="password" name="Eve" status="listening to alice and bob"
+./app create username="dave" password="password" name="Dave" status="zzz"
+./app sort username bogo
+./app create username="alice" password="password" name="Alice" status="listening to bob"
+./app create username="bob" password="password" name="Bob" status="talking to alice"
+./app create username="eve" password="password" name="Eve" status="listening to alice and bob"
+./app create username="dave" password="password" name="Dave" status="zzz"
+./app sort
+./app create username="alice" password="password" name="Alice" status="listening to bob"
+./app create username="bob" password="password" name="Bob" status="talking to alice"
+./app create username="eve" password="password" name="Eve" status="listening to alice and bob"
+./app create username="dave" password="password" name="Dave" status="zzz"
+./app sort username
+./app create username="alice" password="password" name="Alice" status="listening to bob"
+./app create username="bob" password="password" name="Bob" status="talking to alice"
+./app create username="eve" password="password" name="Eve" status="listening to alice and bob"
+./app create username="dave" password="password" name="Dave" status="zzz"
+./app sort name
+./app create username="alice" password="password" name="Alice" status="listening to bob"
+./app create username="bob" password="password" name="Bob" status="talking to alice"
+./app create username="eve" password="password" name="Eve" status="listening to alice and bob"
+./app create username="dave" password="password" name="Dave" status="zzz"
+./app sort status
+./app create username="alice" password="password" name="Alice" status="listening to bob"
+./app create username="bob" password="password" name="Bob" status="talking to alice"
+./app create username="eve" password="password" name="Eve" status="listening to alice and bob"
+./app create username="dave" password="password" name="Dave" status="zzz"
+./app sort updated
+./app create username="alice" password="password" name="Alice" status="listening to bob"
+./app create username="bob" password="password" name="Bob" status="talking to alice"
+./app create username="eve" password="password" name="Eve" status="listening to alice and bob"
+./app create username="dave" password="password" name="Dave" status="zzz"
+./app sort username desc
+./app create username="alice" password="password" name="Alice" status="listening to bob"
+./app create username="bob" password="password" name="Bob" status="talking to alice"
+./app create username="eve" password="password" name="Eve" status="listening to alice and bob"
+./app create username="dave" password="password" name="Dave" status="zzz"
+./app sort name desc
+./app create username="alice" password="password" name="Alice" status="listening to bob"
+./app create username="bob" password="password" name="Bob" status="talking to alice"
+./app create username="eve" password="password" name="Eve" status="listening to alice and bob"
+./app create username="dave" password="password" name="Dave" status="zzz"
+./app sort status desc
+./app create username="alice" password="password" name="Alice" status="listening to bob"
+./app create username="bob" password="password" name="Bob" status="talking to alice"
+./app create username="eve" password="password" name="Eve" status="listening to alice and bob"
+./app create username="dave" password="password" name="Dave" status="zzz"
+./app sort updated asc
+./app join
+./app join
+./app join
+./app join
+./app people
+./app join
+./app join
+./app join
+./app join
+./app sort
+./app join
+./app join
+./app join
+./app join
+./app sort username
+./app join
+./app join
+./app join
+./app join
+./app sort name
+./app join
+./app join
+./app join
+./app join
+./app sort status
+./app join
+./app join
+./app join
+./app join
+./app sort updated
+./app join
+./app join
+./app join
+./app join
+./app sort updated desc
+./app join
+./app join
+./app join
+./app join
+./app sort updated asc
+./app join
+./app join
+./app join
+./app join
+./app sort username asc
+./app join
+./app join
+./app join
+./app join
+./app sort username desc
+./app join
+./app join
+./app join
+./app join
+./app sort name asc
+./app join
+./app join
+./app join
+./app join
+./app sort name desc
+./app join
+./app join
+./app join
+./app join
+./app sort status asc
+./app join
+./app join
+./app join
+./app join
+./app sort status desc

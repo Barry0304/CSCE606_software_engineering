@@ -1,0 +1,6 @@
+#!/usr/bin/python3
+from src.main.db import db_reset
+
+if __name__ == "__main__":
+    db_reset()
+    

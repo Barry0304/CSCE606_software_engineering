@@ -1,0 +1,84 @@
+#!/usr/bin/python3
+
+import sys
+from src.main import info
+from src.main import auth
+from src.main import update
+
+def parse_args(args):
+    args = args.split(' ',1)
+    command = args[0]
+    if len(args) > 1:
+        args = args[1]
+    else:
+        args=""
+    return command,args
+
+def parse_args_with_session(args):
+    args = args.split(' ',2)
+    session_token = args[0]
+    if len(args) == 1:
+        command = ""
+    else:
+        command = args[1]
+    if len(args) > 2:
+        args = args[2]
+    else:
+        args=""
+    return session_token, command, args
+
+def main():
+    # with open('debug.txt', 'a') as file:
+    #     file.write(" ".join(sys.argv))
+    #     file.write("\n")
+    #     file.close()
+
+    if ((len(sys.argv) < 2) or (sys.argv[1] == "home")):
+        info.show_info()
+    else:
+        command,args = parse_args(sys.argv[1])
+        if command == "login":
+            auth.login_account(args)
+        elif command == "join":
+            auth.join_account()
+        elif command == "create":
+            auth.create_account(args)
+        elif command == "people":
+            info.show_people()
+        elif command == "show":
+            info.show_person(args)
+        elif command == "find":
+            info.find_account(args)
+        elif command == "sort":
+            info.sort_account(args)
+        elif command == "session":
+            if not args:
+                print("access denied: missing session token\n")
+                return
+            session_token, command, args = parse_args_with_session(args)
+            if command == "home" or command == "":
+                info.show_info_with_session_token(session_token)
+            elif command == "people":
+                info.show_people_with_session_token(session_token)
+            elif command == "show":
+                info.show_person_with_session_token(session_token, args)
+            elif command == "edit":
+                update.edit(session_token)
+            elif command == "logout":
+                auth.logout_account(session_token)
+            elif command == "update":
+                update.update_account(session_token,args)
+            elif command == "delete":
+                auth.delete_account(session_token)
+            elif command == "find":
+                info.find_account_with_session_token(session_token)
+            elif command == "join" or "login":
+                info.show_session_token_invalid()
+            
+        else:
+            print("not found\ninvalid request: missing session token\nhome: ./app\n")
+        # elif command == "people":
+        # Add more commands as needed
+
+if __name__ == "__main__":
+    main()
