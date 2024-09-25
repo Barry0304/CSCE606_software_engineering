@@ -1,0 +1,25 @@
+inherit_from:
+  - '.rubocop-performance.yml'
+  - '.rubocop-rails.yml'
+  - '.rubocop-rspec.yml'
+
+require:
+  - rubocop-performance
+  - rubocop-rails
+  - rubocop-rspec
+
+AllCops:
+  TargetRubyVersion: 3.2
+  TargetRailsVersion: 7.0
+  Exclude:
+    - '**/db/migrate/*'
+    - 'db/schema.rb'
+    - '**/Gemfile.lock'
+    - '**/Rakefile'
+    - '**/rails'
+    - '**/vendor/**/*'
+    - '**/spec_helper.rb'
+    - '**/rails_helper.rb'
+    - 'node_modules/**/*'
+    - 'bin/*'
+    - 'config/initializers/*'
