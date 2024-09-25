@@ -9,16 +9,29 @@ RSpec.describe MoviesController, type: :controller do
                   release_date: "2014-11-07",
                   director: "Don Hall, Chris Williams")
 
-    # TODO(student): add more movies to use for testing
+    Movie.create(title: "Inception", rating: "PG-13", release_date: "2010-07-16", director: "Christopher Nolan")
+    Movie.create(title: "Interstellar", rating: "PG-13", release_date: "2014-11-07", director: "Christopher Nolan")
+    Movie.create(title: "Alien", rating: "R", release_date: "1979-05-25", director: "Ridley Scott")
+    Movie.create(title: "Blade Runner", rating: "R", release_date: "1982-06-25", director: "Ridley Scott")
+                
   end
 
   describe "when trying to find movies by the same director" do
-    it "returns a valid collection when a valid director is present"
-      # TODO(student): implement this test
-
-    it "redirects to index with a warning when no director is present"
-      # TODO(student): implement this test
+    it "returns a valid collection when a valid director is present" do
+      movie = Movie.create(title: "Inception", director: "Christopher Nolan")
+      movie2 = Movie.create(title: "Interstellar", director: "Christopher Nolan")
+      get :find_similar, params: { id: movie.id }
+      expect(assigns(:similar_movies)).to include(movie2)
+    end
+  
+    it "redirects to index with a warning when no director is present" do
+      movie = Movie.create(title: "Unknown Movie", director: nil)
+      get :find_similar, params: { id: movie.id }
+      expect(response).to redirect_to(movies_path)
+      expect(flash[:notice]).to match(/has no director info/)
+    end
   end
+  
 
   describe "creates" do
     it "movies with valid parameters" do
@@ -76,6 +89,17 @@ RSpec.describe MoviesController, type: :controller do
       expect(flash[:notice]).to match(/has no director info/)
     end
   end
+
+  describe 'DELETE destroy' do
+    it "deletes the movie and redirects to the movies index with a notice" do
+      movie = Movie.create(title: 'Test Movie', director: 'Test Director', rating: 'PG', release_date: '2024-01-01')
+      expect {
+        delete :destroy, params: { id: movie.id }
+      }.to change(Movie, :count).by(-1)
+      expect(response).to redirect_to(movies_path)
+      expect(flash[:notice]).to eq("Movie '#{movie.title}' deleted.")
+    end
+  end  
 
 end
 

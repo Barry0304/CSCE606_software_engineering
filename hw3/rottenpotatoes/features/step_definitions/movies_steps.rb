@@ -34,7 +34,13 @@ When('I fill in {string} with {string}') do |field,value|
 end
 
 When('I press {string}') do |button|
-  click_button button
+  if page.has_button?(button)
+    click_button button
+  elsif page.has_link?(button)
+    click_link button
+  else
+    raise "No button or link with text '#{button}' found"
+  end
 end
 
 Then('the director of {string} should be {string}') do |movie_title, director_name|
@@ -67,3 +73,4 @@ end
 Then('I should be on the home page') do
   expect(page).to have_current_path(movies_path)
 end
+
