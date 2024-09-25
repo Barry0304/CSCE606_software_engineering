@@ -60,5 +60,22 @@ RSpec.describe MoviesController, type: :controller do
       movie.destroy
     end
   end
+  
+  describe "GET find_similar" do
+    it "finds movies by the same director" do
+      movie = Movie.create(title: "Alien", director: "Ridley Scott")
+      movie2 = Movie.create(title: "Blade Runner", director: "Ridley Scott")
+      get :find_similar, params: { id: movie.id }
+      expect(assigns(:similar_movies)).to include(movie2)
+    end
+
+    it "redirects to index with a warning when no director is present" do
+      movie = Movie.create(title: "Alien", director: nil)
+      get :find_similar, params: { id: movie.id }
+      expect(response).to redirect_to(movies_path)
+      expect(flash[:notice]).to match(/has no director info/)
+    end
+  end
+
 end
 
