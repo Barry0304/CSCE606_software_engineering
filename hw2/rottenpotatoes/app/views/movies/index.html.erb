@@ -35,7 +35,9 @@
         <td>
           <%= link_to 'Show', movie_path(movie), class: 'btn btn-show' %>
           <%= link_to 'Edit', edit_movie_path(movie), class: 'btn' %>
-          <%= link_to 'Delete', movie_path(movie), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+          <%= form_with url: movie_path(movie), method: :delete, local: true, style: 'display: inline;' do %>
+              <%= submit_tag 'Delete', class: 'btn btn-danger', style: 'display: inline-block; margin: 0; width: auto;' %>
+            <% end %>
         </td>
       </tr>
     <% end %>

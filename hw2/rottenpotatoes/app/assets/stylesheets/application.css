@@ -58,6 +58,7 @@ th {
 }
 
 form {
+    display: inline;
     background-color: #ffffff;
     padding: 20px;
     border-radius: 8px;
