@@ -26,6 +26,8 @@ more_movies = [
   :release_date => '3-Oct-2024'}
 ]
 
+Movie.delete_all
+
 more_movies.each do |movie|
   Movie.create!(movie)
 end
