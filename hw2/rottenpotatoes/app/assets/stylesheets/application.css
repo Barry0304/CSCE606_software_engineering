@@ -1,15 +1,99 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    padding: 15px;
+    border: 1px solid #ddd;
+    text-align: left;
+    vertical-align: middle;
+}
+
+th {
+    background-color: #f2f2f2;
+    cursor: pointer;
+}
+
+.highlight {
+    background-color: #e6e6e6;
+    font-weight: bold;
+}
+
+.btn {
+    display: inline-block;
+    text-decoration: none;
+    padding: 10px 20px;
+    border: 1px solid #3498db;
+    border-radius: 5px;
+    background-color: #3498db;
+    color: white;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    margin: 5px;
+}
+
+.btn:hover {
+    background-color: #2980b9;
+}
+
+.btn-danger {
+    border-color: #e74c3c;
+    background-color: #e74c3c;
+}
+
+.btn-danger:hover {
+    background-color: #c0392b;
+}
+
+form {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+form input, form select, form textarea {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+h1, h2 {
+    color: #34495e;
+    font-weight: 700;
+    text-align: center;
+}
+
+.flash-notice, .flash-alert {
+    margin: 20px 0;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.flash-notice {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.flash-alert {
+    background-color: #f8d7da;
+    color: #721c24;
+}

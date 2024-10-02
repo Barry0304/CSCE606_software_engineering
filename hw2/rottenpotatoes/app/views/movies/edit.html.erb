@@ -1,12 +1,12 @@
-<% content_for :title, "Editing movie" %>
+<!-- app/views/movies/edit.html.erb -->
+<% content_for :title, "Edit Movie" %>
 
-<h1>Editing movie</h1>
+<h1>Edit Movie</h1>
 
 <%= render "form", movie: @movie %>
 
 <br>
 
 <div>
-  <%= link_to "Show this movie", @movie %> |
-  <%= link_to "Back to movies", movies_path %>
+  <%= link_to "Back to movies", movies_path(sort_by: session[:sort_by], direction: session[:direction]), class: 'btn' %>
 </div>

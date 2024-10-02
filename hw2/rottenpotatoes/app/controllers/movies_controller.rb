@@ -3,7 +3,13 @@ class MoviesController < ApplicationController
 
   # GET /movies or /movies.json
   def index
-    @movies = Movie.all
+    session[:sort_by] = params[:sort_by] if params[:sort_by].present?
+    session[:direction] = params[:direction] if params[:direction].present?
+
+    sort_by = session[:sort_by] || 'title'
+    direction = session[:direction] || 'asc'
+
+    @movies = Movie.order("#{sort_by} #{direction}")
   end
 
   # GET /movies/1 or /movies/1.json
@@ -19,31 +25,24 @@ class MoviesController < ApplicationController
   def edit
   end
 
-  # POST /movies or /movies.json
   def create
     @movie = Movie.new(movie_params)
 
-    respond_to do |format|
-      if @movie.save
-        format.html { redirect_to movie_url(@movie), notice: "Movie was successfully created." }
-        format.json { render :show, status: :created, location: @movie }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @movie.errors, status: :unprocessable_entity }
-      end
+    if @movie.save
+      flash[:notice] = "#{@movie.title} was successfully created."
+      redirect_to movies_path(sort_by: session[:sort_by], direction: session[:direction])
+    else
+      render 'new'
     end
   end
 
-  # PATCH/PUT /movies/1 or /movies/1.json
   def update
-    respond_to do |format|
-      if @movie.update(movie_params)
-        format.html { redirect_to movie_url(@movie), notice: "Movie was successfully updated." }
-        format.json { render :show, status: :ok, location: @movie }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @movie.errors, status: :unprocessable_entity }
-      end
+    @movie = Movie.find(params[:id])
+    if @movie.update(movie_params)
+      flash[:notice] = "#{@movie.title} was successfully updated."
+      redirect_to movies_path(sort_by: session[:sort_by], direction: session[:direction])
+    else
+      render 'edit'
     end
   end
 

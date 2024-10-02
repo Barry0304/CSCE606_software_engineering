@@ -1,10 +1,28 @@
-<p style="color: green"><%= notice %></p>
+<!-- app/views/movies/show.html.erb -->
+<% content_for :title, @movie.title %>
 
-<%= render @movie %>
+<h1>Movie Details</h1>
 
-<div>
-  <%= link_to "Edit this movie", edit_movie_path(@movie) %> |
-  <%= link_to "Back to movies", movies_path %>
+<table>
+  <tr>
+    <th>Title</th>
+    <td><%= @movie.title %></td>
+  </tr>
+  <tr>
+    <th>Rating</th>
+    <td><%= @movie.rating %></td>
+  </tr>
+  <tr>
+    <th>Release Date</th>
+    <td><%= @movie.release_date %></td>
+  </tr>
+  <tr>
+    <th>Description</th>
+    <td><%= @movie.description %></td>
+  </tr>
+</table>
 
-  <%= button_to "Destroy this movie", @movie, method: :delete %>
+<div class="action-buttons">
+  <%= link_to 'Edit', edit_movie_path(@movie), class: 'btn' %>
+  <%= link_to 'Back to movies', movies_path(sort_by: session[:sort_by], direction: session[:direction]), class: 'btn' %>
 </div>
