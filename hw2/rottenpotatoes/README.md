@@ -1,24 +1,10 @@
-# README
+# RottenPotatoes - CSCE 606 Software Engineering Homework
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is the practice assignment 2 for CSCE 606 Software Engineering course.
 
-Things you may want to cover:
+## Heroku Deployment
 
-* Ruby version
+You can view the live application at the following URL:
 
-* System dependencies
+[RottenPotatoes on Heroku](https://barry-se-pa2-64b7bfd9f122.herokuapp.com/movies?direction=desc&sort_by=rating)
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
